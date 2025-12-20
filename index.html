@@ -1570,6 +1570,130 @@
             animation: badgePulse 3s infinite;
         }
 
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .reference-card {
+            background: linear-gradient(135deg, #ffffff, #fcfdff);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reference-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(74, 144, 226, 0.15);
+            border-color: #4a90e2;
+        }
+
+        .reference-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #4a90e2, #2d4a8a);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .reference-card:hover::before {
+            opacity: 1;
+        }
+
+        .reference-icon {
+            font-size: 2.5rem;
+            color: #4a90e2;
+            margin-bottom: 1.2rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .reference-title {
+            color: #1a365d;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .reference-link {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(248, 250, 252, 0.8);
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .reference-link a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-size: 0.9rem;
+            word-break: break-all;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .reference-link a:hover {
+            color: #2d4a8a;
+            text-decoration: underline;
+        }
+
+        .reference-description {
+            color: #718096;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #e2e8f0;
+            flex-grow: 1;
+        }
+
+        /* Анимация появления карточек */
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reference-card {
+            animation: cardAppear 0.6s ease-out;
+        }
+
+        .reference-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .reference-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Стили для финального вывода в заключении */
+        .note[style*="background: linear-gradient(135deg, #e8f5e9, #c8e6c9)"]::before {
+            content: '';
+            opacity: 0.3;
+        }
+
     </style>
 </head>
 
@@ -1731,15 +1855,6 @@
                                 <h6 class="step-title">Дизайн-модуль</h6>
                                 <p class="step-desc">Специализированный модуль, обеспечивающий содержательную и
                                     стилистическую согласованность генерируемых результатов с принципами дизайна</p>
-                            </div>
-                        </div>
-
-                        <div class="process-step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h6 class="step-title">RAG-система</h6>
-                                <p class="step-desc">Retrieval-Augmented Generation система для интеллектуальной
-                                    обработки запросов и генерации персонализированных решений</p>
                             </div>
                         </div>
                     </div>
@@ -1931,8 +2046,6 @@
                                     <div class="arch-model">WebDriverWait</div>
                                     <p class="arch-desc">Ожидание появления конкретных элементов перед их парсингом</p>
                                     <ul class="arch-features">
-                                        <li><code>presence_of_element_located</code></li>
-                                        <li><code>visibility_of_element_located</code></li>
                                         <li>Таймауты 10-30 секунд</li>
                                     </ul>
                                 </div>
@@ -1972,7 +2085,7 @@
                     <div class="detail-card">
                         <div class="detail-header">
                             <span class="detail-icon">📁</span>
-                            <h5 class="detail-title">Структурированные данные для обучения моделей</h5>
+                            <h5 class="detail-title">Структурированные данные</h5>
                         </div>
                         <div class="detail-content">
 
@@ -2004,18 +2117,6 @@
                                         <span class="spec-value">95% заполненности</span>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="detail-section">
-                                <h6 class="detail-subtitle">Применение в Data Science:</h6>
-                                <ul class="advantages-list">
-                                    <li><strong>Автоматическая классификация:</strong> Модели для категоризации новых
-                                        товаров</li>
-                                    <li><strong>Feature engineering:</strong> Создание новых признаков для обучения</li>
-                                    <li><strong>Анализ рынка:</strong> Исследование ценовой политики и ассортимента</li>
-                                    <li><strong>Обучение моделей:</strong> Входные данные для нейросетей компьютерного
-                                        зрения</li>
-                                </ul>
                             </div>
 
                             <div class="detail-section">
@@ -3075,13 +3176,93 @@ result = generation3D_from_image(
             <h2 class="section-title">🏁 Заключение</h2>
             <div class="section-content">
                 <div class="section-intro">
-                    <p>В данном разделе будут подведены итоги исследования, сформулированы выводы и намечены перспективы
-                        дальнейшей работы.</p>
+                    <p>В данном разделе представлены итоги проведенного исследования, сформулированы ключевые выводы и
+                        определены перспективы дальнейшего развития проекта.</p>
                 </div>
-                <div class="placeholder">
-                    <p>Здесь будет размещено содержание раздела "Заключение".</p>
-                    <p>Текст может включать обобщение полученных результатов, оценку достижения поставленных целей,
-                        обсуждение ограничений исследования и предложения по дальнейшему развитию проекта.</p>
+
+                <div class="preprocessing-description">
+                    <p>Проведенное исследование позволило разработать и протестировать концептуальную систему для
+                        автоматизированного проектирования интерьерных решений, объединяющую современные технологии
+                        искусственного интеллекта и принципы дизайна интерьера.</p>
+
+                    <p>Реализованный подход демонстрирует значительный потенциал в преодолении традиционных ограничений
+                        процесса создания персонализированных жилых пространств, предлагая сбалансированное сочетание
+                        творческой свободы и технической точности.</p>
+
+                    <div class="libraries-section">
+                        <h4 class="subsection-title">🎯 Ключевые достижения проекта</h4>
+                        <div class="libraries-grid">
+                            <div class="library-card">
+                                <div class="library-icon">✅</div>
+                                <h5 class="library-name">Датасет мебели</h5>
+                                <p class="library-desc">Создан структурированный датасет из 15000+ товаров с
+                                    маркетплейса Ozon</p>
+                            </div>
+                            <div class="library-card">
+                                <div class="library-icon">🤖</div>
+                                <h5 class="library-name">3D-генерация</h5>
+                                <p class="library-desc">Реализован пайплайн генерации 3D-моделей на основе Hunyuan3D-2
+                                </p>
+                            </div>
+                            <div class="library-card">
+                                <div class="library-icon">🔧</div>
+                                <h5 class="library-name">Предобработка</h5>
+                                <p class="library-desc">Разработаны алгоритмы сегментации и оптимизации изображений</p>
+                            </div>
+                            <div class="library-card">
+                                <div class="library-icon">🎨</div>
+                                <h5 class="library-name">Архитектура</h5>
+                                <p class="library-desc">Спроектирована модульная система для интеллектуального дизайна
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>Разработанная система подтвердила свою эффективность в решении задач автоматизации начальных
+                        этапов проектирования интерьера, демонстрируя возможность интеллектуальной интерпретации
+                        пользовательских предпочтений и их трансформации в конкретные пространственные решения.</p>
+
+                    <div class="detail-card">
+                        <div class="detail-content">
+                            <div class="detail-section">
+                                <h6 class="detail-subtitle">🎯 Основной вывод</h6>
+                                <p class="detail-text">Комбинация технологий парсинга данных, RAG-систем и передовых
+                                    моделей 3D-генерации создает мощный инструментарий для демократизации доступа к
+                                    профессиональному дизайну интерьеров, сокращая временные и финансовые затраты при
+                                    сохранении высокого качества результата.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                  
+                    <h4 class="subsection-title">🚀 Перспективы развития</h4>
+
+                    <div class="detail-section" style="margin-top: 1rem;">
+                        <h6 class="detail-subtitle">📈 Направления дальнейших исследований</h6>
+                        <ul class="advantages-list">
+                            <li><strong>Расширение базы знаний:</strong> Интеграция большего количества дизайнерских
+                                принципов и стилей</li>
+                            <li><strong>Улучшение качества генерации:</strong> Обучение специализированных моделей на
+                                собранном датасете</li>
+                            <li><strong>Реализация полного цикла:</strong> От планировки помещения до полной
+                                визуализации интерьера</li>
+                            <li><strong>Интеграция с AR/VR:</strong> Возможность "примерки" мебели в реальном
+                                пространстве</li>
+                            <li><strong>Персонализация:</strong> Учет большего количества параметров пользователя
+                                (бюджет, стиль жизни и т.д.)</li>
+                            <li><strong>Коммерциализация:</strong> Разработка MVP для тестирования на реальных
+                                пользователях</li>
+                        </ul>
+                    </div>
+
+                    <div class="note"
+                        style="margin-top: 2.5rem; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left: 5px solid #4CAF50;">
+                        <p><strong>Финальный вывод:</strong> Проведенная работа подтвердила возможность создания
+                            интеллектуальной системы для автоматизированного проектирования интерьеров, способной
+                            генерировать персонализированные, эстетически привлекательные и функционально обоснованные
+                            решения. Дальнейшее развитие проекта имеет значительный потенциал как в академическом, так и
+                            в коммерческом направлениях.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -3089,8 +3270,57 @@ result = generation3D_from_image(
         <section id="references" class="section-container">
             <h2 class="section-title">📚 Список литературы</h2>
             <div class="section-content">
-                <div class="placeholder">
-                    <p>Список использованных источников и литературы.</p>
+                <div class="section-intro">
+                    <p>Список использованных источников, научных статей и документации.</p>
+                </div>
+
+                <div class="references-grid">
+                    <div class="reference-card">
+                        <div class="reference-icon">🔗</div>
+                        <h3 class="reference-title">Репозиторий Hunyuan3D</h3>
+                        <div class="reference-link">
+                            <a href="https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1?ysclid=mjde74p2bk350882234"
+                                target="_blank">https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1?ysclid=mjde74p2bk350882234</a>
+                        </div>
+                        <div class="reference-description">
+                            Информация о развертывании модели HUnyuan3D-2
+                        </div>
+                    </div>
+
+                    <div class="reference-card">
+                        <div class="reference-icon">🔗</div>
+                        <h3 class="reference-title">Репозиторий библиотеки Rembg</h3>
+                        <div class="reference-link">
+                            <a href="https://github.com/danielgatis/rembg?ysclid=mjde5qer7d903085947"
+                                target="_blank">https://github.com/danielgatis/rembg?ysclid=mjde5qer7d903085947</a>
+                        </div>
+                        <div class="reference-description">
+                            Использование библиотеки для удаления фона
+                        </div>
+                    </div>
+
+                    <div class="reference-card">
+                        <div class="reference-icon">🔗</div>
+                        <h3 class="reference-title">Репозиторий EasyOCR</h3>
+                        <div class="reference-link">
+                            <a href="https://github.com/JaidedAI/EasyOCR?ysclid=mjde6h3e8a203797677"
+                                target="_blank">https://github.com/JaidedAI/EasyOCR?ysclid=mjde6h3e8a203797677</a>
+                        </div>
+                        <div class="reference-description">
+                            Использование библиотеки для удаления текста
+                        </div>
+                    </div>
+                    <div class="reference-card">
+                        <div class="reference-icon">📖</div>
+                        <h3 class="reference-title">Статья о диффузионных моделях</h3>
+                        <div class="reference-link">
+                            <a href="https://habr.com/ru/articles/713076/?ysclid=mje70v84oh391085760"
+                                target="_blank">https://habr.com/ru/articles/713076/?ysclid=mje70v84oh391085760</a>
+                        </div>
+                        <div class="reference-description">
+                            Приницип работы диффузионных моделей
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
